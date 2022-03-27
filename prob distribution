@@ -1,0 +1,29 @@
+from statistics import NormalDist
+print("Find Probability of Any Distribution..")
+median = float(input("Enter mean: "))
+sd = float(input("Enter Standrad Deviation: "))
+dist = input("Distribution to find probability: ")
+dist = dist.split(' ')
+nd = NormalDist(mu = median, sigma= sd)
+print()
+print("*"*45)
+print()
+if(len(dist)==5 and dist[1][0]=="<" and dist[3][0]=="<"):
+    print("Probability for (",*dist,") :",round((nd.cdf(float(dist[4])) - nd.cdf(float(dist[0])))*100,2),"%")
+elif(len(dist)==3):    
+    if(dist[1][0]=="<"):
+        print("Probability for (",*dist,") :",round(nd.cdf(float(dist[-1]))*100,2),"%")    
+    elif(dist[1][0]==">"):
+        print("Probability for (",*dist,") :",round(100 - round(nd.cdf(float(dist[-1]))*100,2),2),'%')
+    elif(dist[1]=="="):
+        print("Probability for (",*dist,") :",0,"%")
+    else:
+        print("ENTER APPORPRIATE VALUE")    
+else:
+    print("ENTER APPORPRIATE VALUE")
+print()    
+print("*"*45)
+
+
+
+# DONE BY KS KAUTHAM VTERIVEL
